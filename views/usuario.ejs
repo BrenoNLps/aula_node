@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Usuário</title></head>
+    <body>
+        <% if (typeof id !== 'undefined') { %>
+        <h1>Usuário: <%= id %></h1>
+        <% } %>
+        <% if (typeof nome !== 'undefined') { %>
+        <h1>Buscando: <%= nome %></h1>
+        <% } %>
+        <% if (typeof mensagem !== 'undefined') { %>
+        <h1><%= mensagem %></h1>
+        <% } %>
+    </body>
+</html>
