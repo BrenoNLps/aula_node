@@ -1,16 +1,36 @@
-const router = require('express').Router()
+const router = require('express').Router() 
+const Usuario = require('./models/Usuario')
 
-router.get('/', (req, res) => {
-    res.render('index', { mensagem: 'Hello World' })
+
+//Método GET
+router.get('/usuario', async (req, res) => { 
+const usuario = await Usuario.findAll() 
+res.json(usuario) 
+}) 
+
+//Método POST
+router.post('/usuario', async (req, res) => { 
+const usuario = await Usuario.create(req.body) 
+res.status(201).json(usuario) 
 })
-router.get('/usuario/:id', (req, res) => {
-    res.render('usuario', { id: req.params.id })
+
+//Método DELETE
+router.delete('/usuario/:id', async (req, res) => { 
+const usuario = await Usuario.findByPk(req.params.id) 
+await usuario.destroy() 
+res.status(204).send() 
 })
-router.get('/usuario', (req, res) => {
-    res.render('usuario', { nome: req.query.nome })
+
+//Método PUT
+router.put('/usuario/:id', async (req, res) => { 
+const usuario = await Usuario.findByPk(req.params.id) 
+await usuario.update(req.body) res.json(usuario) 
 })
-router.post('/usuario', (req, res) => {
-    const { nome } = req.body
-    res.render('usuario', { mensagem: `Usuário ${nome} criado` })
+
+//Método PATCH
+router.patch('/usuario/:id', async (req, res) => { 
+const usuario = await Usuario.findByPk(req.params.id) 
+await usuario.update(req.body) res.json(usuario) 
 })
+
 module.exports = router
