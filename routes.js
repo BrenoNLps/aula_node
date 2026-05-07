@@ -24,13 +24,15 @@ res.status(204).send()
 //Método PUT
 router.put('/usuario/:id', async (req, res) => { 
 const usuario = await Usuario.findByPk(req.params.id) 
-await usuario.update(req.body) res.json(usuario) 
+await usuario.update(req.body) 
+res.json(usuario) 
 })
 
 //Método PATCH
 router.patch('/usuario/:id', async (req, res) => { 
 const usuario = await Usuario.findByPk(req.params.id) 
-await usuario.update(req.body) res.json(usuario) 
+await usuario.update(req.body) 
+res.json(usuario) 
 })
 
 module.exports = router
