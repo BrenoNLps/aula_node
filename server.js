@@ -3,6 +3,7 @@ const cors = require('cors')
 const server = express()
 
 server.set('view engine', 'ejs')
+server.use(express.static('public'))
 server.use(express.json())
 server.use(cors())
 server.use((req, res, next) => {
